@@ -1,0 +1,24 @@
+{
+    "name": "dcs/api-platform-filter-extensions",
+    "type": "api-platform-extensions",
+    "description": "Additional filters for the api-platform project",
+    "keywords": ["api-platform","apifilter","or","orx","multifilter","filter","orm","doctrine"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damiano Ciarla",
+            "email": "damiano.ciarla@gmail.org"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3"
+    },
+    "require-dev": {
+        "api-platform/api-pack": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "DCS\\ApiPlatform\\Filter\\": "src"
+        }
+    }
+}
