@@ -29,13 +29,20 @@ class MultiSearchFilter extends SearchFilter
             return;
         }
 
-        $value = $context['filters'][$this->key];
+        $values = array_unique(
+            array_merge(
+                [$context['filters'][$this->key]],
+                explode(' ', $context['filters'][$this->key])
+            )
+        );
 
         $queryBuilderCloned = clone $queryBuilder;
         $queryBuilderCloned->resetDQLPart('where');
 
         foreach (array_keys($this->properties) as $property) {
-            $this->filterProperty($property, $value, $queryBuilderCloned, $queryNameGenerator, $resourceClass, $operationName, $context);
+            foreach ($values as $value) {
+                $this->filterProperty($property, $value, $queryBuilderCloned, $queryNameGenerator, $resourceClass, $operationName, $context);
+            }
         }
 
         $queryBuilder->andWhere(
